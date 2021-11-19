@@ -32,19 +32,26 @@
 </head>
 <body>
 <?php
-$route = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 
-$resource = empty($route[1]) ? 'enter' : $route[1];
-$action = empty($route[2]) ? '' : $route[2];
+use Pecee\SimpleRouter\SimpleRouter as Router;
 
-$controller = "controllers/$resource.controller.php";
+Router::get();
 
-if (file_exists($controller)) {
-    require($controller);
-    return;
-}
+Router::start();
+// $route = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 
-require("controllers/404.controller.php");
+// $resource = empty($route[1]) ? 'enter' : $route[1];
+// $action = empty($route[2]) ? '' : $route[2];
+
+// $controller = "controllers/$resource.controller.php";
+
+// if (file_exists($controller)) {
+//     require($controller);
+//     return;
+// }
+
+// require("controllers/404.controller.php");
+
 
 ?>
 </body>

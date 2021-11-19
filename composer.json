@@ -1,0 +1,17 @@
+{
+    "name": "heloi/utf",
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Heloi Neto",
+            "email": "hey@heloineto.com"
+        }
+    ],
+    "require": {
+        "pecee/simple-router": "4.3.7.2"
+    }
+}
