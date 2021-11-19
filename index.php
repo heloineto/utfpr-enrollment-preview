@@ -1,7 +1,6 @@
 <?php
 require('vendor/autoload.php');
 use Pecee\SimpleRouter\SimpleRouter as Router;
-use Pecee\Handlers\IExceptionHandler;
 use Pecee\Http\Request;
 use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
 

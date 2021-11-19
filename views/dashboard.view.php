@@ -374,7 +374,8 @@
     </div>
   </div>
   <script>
-    const selected = {};
+    const selected = <?= $savedScheduleData ?> ?? {};
+    console.log(selected);
     const classesJsonInput = document.getElementById('classes-json-input');
 
     const updateInput = () => {

@@ -22,6 +22,13 @@
   $subjectsQuery->execute();
   $subjects = $subjectsQuery->fetchAll(PDO::FETCH_OBJ);
 
+
+  $savedQuery = $database->prepare("SELECT * FROM schedules WHERE ra = :ra");
+  $savedQuery->bindParam(':ra', $_SESSION['ra']);
+  $savedQuery->execute();
+  $savedScheduleData = json_decode($savedQuery->fetch(PDO::FETCH_OBJ)->scheduleData);
+  print_r($savedScheduleData);
+
   $enrollError = "";
 
   if(!empty($_POST)) {
