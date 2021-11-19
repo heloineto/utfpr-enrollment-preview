@@ -24,7 +24,7 @@
 
   $enrollError = "";
 
-  if($action == 'enroll') {
+  if(!empty($_POST)) {
     $scheduleData = $_POST['schedule'];
 
     if(empty($scheduleData)) {

@@ -1,3 +1,4 @@
+<?php require('layout/header.view.php') ?>
 <main class="bg-gray-50">
   <div
     class="
@@ -134,3 +135,4 @@
     </div>
   </div>
 </main>
+<?php require('layout/footer.view.php') ?>

@@ -1,3 +1,4 @@
+<?php require('layout/header.view.php') ?>
 <main class="bg-gray-100 p-4">
   <?php if (!empty($_POST)): ?>
   <?php if(empty($enrollError)): ?>
@@ -334,7 +335,7 @@
           </tbody>
         </table>
       </div>
-      <form class="mt-auto mb-0" method="POST" action="http://localhost/utf/dashboard/enroll">
+      <form class="mt-auto mb-0" method="POST" action="dashboard">
         <input id="classes-json-input" class="hidden" name="schedule" type="text">
         <button type="submit"
           class="
@@ -495,3 +496,4 @@
     expandButtom.addEventListener('click', handleExpandClick);
   </script>
 </main>
+<?php require('layout/footer.view.php') ?>
