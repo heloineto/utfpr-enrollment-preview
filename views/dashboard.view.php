@@ -374,8 +374,16 @@
     </div>
   </div>
   <script>
-    const selected = <?= $savedScheduleData ?> ?? {};
-    console.log(selected);
+    let saved = [];
+
+    try {
+      saved = <?php echo $savedScheduleData ?>
+    } catch (e) {
+      saved = [];
+    }
+
+    const selected = {};
+
     const classesJsonInput = document.getElementById('classes-json-input');
 
     const updateInput = () => {
@@ -394,6 +402,26 @@
         )
       );
     };
+
+    if(saved && saved != []) {
+      saved.forEach(({subjectName, classId, schedule, subjectId}) => {
+        const id = `${subjectId}--${classId}`;
+
+        console.log(schedule);
+        
+        schedule.forEach((each) => {
+        const eachElem = document.getElementById(each);
+        if(!eachElem) return;
+        eachElem.innerText = subjectName;
+        eachElem.setAttribute('href', `#${id}`);
+      });
+
+        const elem2 = document.getElementById(id);
+        elem2.classList.add('selected');
+        selected[id] = {subjectName, schedule,};
+        updateInput();
+      })
+    }
 
     const verifyConflicts = (subjectName, schedule) => {
       for (each of schedule) {
