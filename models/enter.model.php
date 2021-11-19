@@ -17,14 +17,21 @@
   $ra = $_POST['ra'] ?? '';
   $password = $_POST['password'] ?? '';
 
+  require('database/connection.php');
+  $database = Connection::get();
+  $usersQuery = $database->prepare("SELECT * FROM users WHERE ra=:ra");
+  $usersQuery->bindParam(":ra", $ra);
+  $usersQuery->execute();
+  $users = $usersQuery->fetch(PDO::FETCH_OBJ);
+
   /* Form validation */
-  if($ra != 'a2165120') {
+  if(empty($users)) {
     $error['invalid-ra'] = true;
 
     return;
   }
 
-  if($password != 'password') {
+  if($password != $users->password) {
     $error['invalid-password'] = true;
     
     return;

@@ -24,7 +24,7 @@
         <?=$username?>
       </h2>
 
-    <a href="./leave">
+    <a href="http://localhost/utf/leave">
       <button type="submit" class="
           inline-flex items-center px-4 py-2 border border-transparent rounded-md
           shadow-sm text-sm font-medium text-gray-900 bg-yellow-300 hover:bg-yellow-400
