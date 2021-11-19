@@ -1,23 +1,36 @@
 <main class="bg-gray-100 p-4">
   <?php if (!empty($_POST)): ?>
-  <div class="rounded-md bg-green-50 border border-green-500 p-4 mb-5">
-    <div class="flex">
-      <div class="flex-shrink-0">
-        <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-        </svg>
-      </div>
-      <div class="ml-3">
-        <h3 class="text-sm font-medium text-green-800">
-          Matricula feita!
-          JSON:
-        </h3>
-        <div class="mt-2 text-sm text-green-700">
-          <?=$_POST['classes-to-enroll']?>
+  <?php if(empty($enrollError)): ?>
+    <div class="rounded-md bg-green-50 border border-green-500 p-4 mb-5">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-green-800">
+            Matricula feita!
+          </h3>
         </div>
       </div>
     </div>
-  </div>
+  <?php else: ?>
+    <div class="rounded-md bg-red-50 border border-red-500 p-4 mb-5">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">
+            <?= $enrollError ?>
+          </h3>
+        </div>
+      </div>
+    </div>
+  <?php endif ?>
   <?php endif?>
   <div class="md:flex md:items-center md:justify-between bg-gray-800 p-4 rounded-lg">
       <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl">
@@ -321,8 +334,8 @@
           </tbody>
         </table>
       </div>
-      <form class="mt-auto mb-0" method="POST" action="./dashboard/enroll">
-        <input id="classes-json-input" class="hidden" name="classes-to-enroll" type="text">
+      <form class="mt-auto mb-0" method="POST" action="http://localhost/utf/dashboard/enroll">
+        <input id="classes-json-input" class="hidden" name="schedule" type="text">
         <button type="submit"
           class="
             inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md w-full

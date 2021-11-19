@@ -22,6 +22,22 @@
   $subjectsQuery->execute();
   $subjects = $subjectsQuery->fetchAll(PDO::FETCH_OBJ);
 
+  $enrollError = "";
+
   if($action == 'enroll') {
-    $subjectsQuery = $database->prepare("SELECT * FROM subjects");
+    $scheduleData = $_POST['schedule'];
+
+    if(empty($scheduleData)) {
+      $enrollError = "Selecione uma ou mais disciplinas";
+      return;
+    }
+
+    $scheduleQuery = $database->prepare("DELETE FROM schedules WHERE ra = :ra");
+    $scheduleQuery->bindParam(':ra', $_SESSION['ra']);
+    $scheduleQuery->execute();
+
+    $scheduleQuery = $database->prepare("INSERT INTO schedules(ra, scheduleData) VALUES (:ra, :scheduleData)");
+    $scheduleQuery->bindParam(':ra', $_SESSION['ra']);
+    $scheduleQuery->bindParam(':scheduleData', $_POST['schedule']);
+    $scheduleQuery->execute();
   }
