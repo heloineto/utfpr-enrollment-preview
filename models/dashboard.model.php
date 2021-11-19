@@ -27,7 +27,7 @@
   $savedQuery->bindParam(':ra', $_SESSION['ra']);
   $savedQuery->execute();
   $savedScheduleData = $savedQuery->fetch(PDO::FETCH_OBJ)->scheduleData;
-  echo $savedScheduleData;
+
   $enrollError = "";
 
 
@@ -47,4 +47,6 @@
     $scheduleQuery->bindParam(':ra', $_SESSION['ra']);
     $scheduleQuery->bindParam(':scheduleData', $_POST['schedule']);
     $scheduleQuery->execute();
+
+    $savedScheduleData = $scheduleData;
   }
