@@ -321,7 +321,7 @@
           </tbody>
         </table>
       </div>
-      <form class="mt-auto mb-0" method="POST" action="dashboard">
+      <form class="mt-auto mb-0" method="POST" action="./dashboard/enroll">
         <input id="classes-json-input" class="hidden" name="classes-to-enroll" type="text">
         <button type="submit"
           class="

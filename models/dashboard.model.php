@@ -21,3 +21,7 @@
   $subjectsQuery = $database->prepare("SELECT * FROM subjects");
   $subjectsQuery->execute();
   $subjects = $subjectsQuery->fetchAll(PDO::FETCH_OBJ);
+
+  if($action == 'enroll') {
+    $subjectsQuery = $database->prepare("SELECT * FROM subjects");
+  }
