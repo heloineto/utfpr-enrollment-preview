@@ -368,11 +368,11 @@
         'value',
         JSON.stringify(
           Object.entries(selected).map(([key, value]) => {
-            const [subject, classCode] = key.split('--');
+            const [subjectId, classId] = key.split('--');
 
             return {
-              subject,
-              classCode,
+              subjectId,
+              classId,
               ...value,
             };
           })

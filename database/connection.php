@@ -1,11 +1,4 @@
 <?php
-  // try {
-  //   $database = new mysqli('localhost', 'root', '', 'utfpr');
-  //   $database->set_charset('utf-8');
-  // } catch (Exeption $error) {
-  //   throw new Exeption("Erro: Couldn't connect to database: " + $error->getMessage());
-  // }
-
   class Connection {
     private static $instance;
 
